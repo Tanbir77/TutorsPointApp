@@ -1,0 +1,98 @@
+﻿<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+            .topnav a {
+                float: left;
+                color: White;
+                text-align: center;
+                padding: 14px 62px;
+                text-decoration: none;
+                font-size: 19px;
+            }
+
+                .topnav a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
+
+                .topnav a.active {
+                    background-color: #4CAF50;
+                    color: white;
+                }
+    </style>
+</head>
+<body background="1.png">
+
+
+
+
+    <div class="topnav">
+        <a href="/Home">Home</a>
+        <a class="active" href="/About">About</a>
+
+        @if (@Session["tutor"] == "True")
+    {
+        <a href="/Find">Find Tuition</a>
+        <a href="/Login/Welcome">Update Profile</a>
+        <a href="/LoOut">Logout</a>
+
+}
+
+        @if (@Session["parent"] == "True")
+    {
+        <a href="/PostTuition">Post Tuition</a>
+        <a href="/AppliedList">Applied Tutors</a>
+        <a href="/Login/WelcomeParent">Update Profile</a>
+        <a href="/LoOut">Logout</a>
+
+}
+        @if (@Session["tutor"] != "True" && @Session["parent"] != "True")
+    {
+        <a href="/Find">Find Tuition</a>
+        <a href="/SignUp">Sign Up</a>
+        <a href="/Login">Sign In</a>
+}
+        <a href="/ContactUs">Contact Us</a>
+
+    </div>
+    <p align="center"> <font size="20" color="#CB4335"> ABOUT </font> </p>
+    <table align="center" width="70%">
+        <tr>
+
+            <p align='center' style="font-size: 30px;" style="padding: 30px;">
+                It's the first and the largest free tuition website in Bangladesh. Through this site we are trying to provide tuition to University students with free of cost.
+                <br>To get tuition teachers have to make registration to upload his/her profile to web-server so that guardians can see teachers bio-data.
+                <br>
+                <br> Besides a guardian can find an efficient and reliable teacher for his (or her) dearest child
+                <br><br> A Guardian should keep in mind that every good student of a well known university is not a good teacher.
+                <br> A good teacher is that person who can realize your child problems and solve them with great care.
+                <br> He may be from a well known university or not, it doesn't matter.
+            </p>
+
+
+        </tr>
+
+
+
+
+
+    </table>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+﻿@model IEnumerable<TutorsPointRepository.Post>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+
+
+        body {
+            margin: 0;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+            .topnav a {
+                float: left;
+                color: White;
+                text-align: center;
+                padding: 14px 62px;
+                text-decoration: none;
+                font-size: 19px;
+            }
+
+                .topnav a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
+
+                .topnav a.active {
+                    background-color: #4CAF50;
+                    color: white;
+                }
+
+        .button {
+            background-color: #2E86C1;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        .div{
+          border:solid black 2px;
+          width:600px;
+        }
+    </style>
+</head> 
+<body background="1.png">
+
+
+    <div class="topnav">
+        <a href="/Home">Home</a>
+        <a href="/About">About</a>
+
+        @if (@Session["tutor"] == "True")
+        {
+            <a href="/Find">Find Tuition</a>
+            <a href="/Login/Welcome">Update Profile</a>
+            <a href="/LoOut">Logout</a>
+
+        }
+
+        @if (@Session["parent"] == "True")
+        {
+            <a href="/PostTuition">Post Tuition</a>
+            <a href="/AppliedList">Applied Tutors</a>
+            <a href="/Login/WelcomeParent">Update Profile</a>
+            <a href="/LoOut">Logout</a>
+
+        }
+        @if (@Session["tutor"] != "True" && @Session["parent"] != "True")
+        {
+            <a class="active" href="/Find">Find Tuition</a>
+            <a href="/SignUp">Sign Up</a>
+            <a href="/Login">Sign In</a>
+        }
+        <a href="/ContactUs">Contact Us</a>
+
+    </div>
+
+
+
+
+    <center><h3>Total Applies:@TempData["count"] </h3></center>
+    @foreach (var item in Model)
+    {<center>
+
+            <div class="div">
+                <table align="center">
+                    <tr><td><h1>Job Id:</h1>  <td><h1> @Html.DisplayFor(modelItem => item.postId)</h1> </td>  </tr>
+
+                    <tr><td>Title:</td><td>  @Html.DisplayFor(modelItem => item.Title)</td> <td>  @Html.ActionLink("Apply", "Apply", new { id = item.postId })</td></tr>
+                    <tr><td>Student's Class:</td><td> @Html.DisplayFor(modelItem => item.cls)</td></tr>
+                    <tr><td>Student Gender:</td><td> @Html.DisplayFor(modelItem => item.Gender)</td></tr>
+                    <tr><td>Preferable Gender:</td><td>@Html.DisplayFor(modelItem => item.Preferable)</td></tr>
+                    <tr><td>Day Per Week:</td><td>  @Html.DisplayFor(modelItem => item.DaysPerWeek)</td></tr>
+                    <tr><td>Salary:</td><td>@Html.DisplayFor(modelItem => item.Salary)</td></tr>
+                    <tr><td>Location:</td><td> @Html.DisplayFor(modelItem => item.Location)</td></tr>
+                    <tr><td>Subject:</td><td>    @Html.DisplayFor(modelItem => item.Sub)</td></tr>
+                    <tr><td>Category:</td><td> @Html.DisplayFor(modelItem => item.Medium)</td></tr>
+
+
+                    <br />
+                </table>
+
+
+            </div>
+        </center>
+        <br />
+    }
+    @if (TempData["Apply"] != null)
+    {
+        <script>
+            window.onload = function () {
+                alert("@TempData["Apply"]");
+            };
+        </script>
+    }
+
+</body>
+</html>

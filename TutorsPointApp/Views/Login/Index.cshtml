@@ -1,0 +1,95 @@
+﻿<html>
+<head>
+    <title> Login</title>
+
+    
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+            .topnav a {
+                float: left;
+                color: White;
+                text-align: center;
+                padding: 14px 62px;
+                text-decoration: none;
+                font-size: 19px;
+            }
+
+                .topnav a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
+
+                .topnav a.active {
+                    background-color: #4CAF50;
+                    color: white;
+                }
+
+        .button {
+            background-color: #2E86C1;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body background="1.png">
+
+    <div class="topnav">
+        <a  href="/Home">Home</a>
+        <a href="/About">About</a>
+        <a href="/Find">Find Tuition</a>
+
+        <a href="/SignUp">Sign Up</a>
+        <a class="active" href="/Login">Sign In</a>
+        <a  href="/ContactUs">Contact Us</a>
+    </div>
+
+    <p align="center"> <font size="20" color="#CB4335"> Please login </font> </p>
+    <form align="center" method="post" name="fm" id="fm">
+        <table align="center" width="30%">
+            <tr>
+                <td>Email Id:</td>
+                <td><input type="email" name="EmailId" id="EmailId"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><span id="msg1"></span></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" name="Password" id="enpassword"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><span id="msg2"></span></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input class="button" type="submit" value="Sign In" /></td>
+            </tr>
+        </table>
+    </form>
+    @if (TempData["welcome"] != null)
+    {
+        <script>
+            window.onload = function () {
+                alert("@TempData["welcome"]");
+            };
+        </script>
+    }
+</body>
+</html>
